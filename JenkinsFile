@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Namrata-pradhan/MavenJenkins_Task6.git'
+                
+            }
+        }
+        stage('build'){
+            steps{
+                sh 'mvn clean install'
+            }
+        }
+        stage('test'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage('deploy'){
+            steps{
+                echo 'deploy stage...'
+            }
+        }
+    }
+}
